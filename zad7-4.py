@@ -87,30 +87,25 @@ def show(data):
     
 vid=movie(title="Pulp Fiction", year="1994", genre="comedy", views=200)
 ser=series(title="The Simpsons", year="1998", genre="comedy", views=100, episode=10, sezon=1)
-both=[vid]+[ser]
-
-vid.play()
-
-
-
-ser.play()
-
-
+#both=[vid]+[ser]
 
 doc=[]
-for i in range(10):
+for i in range(5):
     doc.append(movie(title=fake.sentence(nb_words=3), year=fake.year(), genre=fake.emoji(), views=fake.random_number(digits=2)))
     doc.append(series(title=fake.sentence(nb_words=3), year=fake.year(), genre=fake.emoji(), views=fake.random_number(digits=2), episode=fake.random_number(digits=2), sezon=fake.random_number(digits=1)))
 doc.append(vid)
 doc.append(ser)
 
+vid.play()
 
+ser.play()
 
 print("Biblioteka filmów")
-show(both)
-generate_views(both)
+show(doc)
+generate_views(doc)
 print()
-show(both)
+show(doc)
+print()
 print(f"Najpopularniejsze filmy i seriale dnia {today} to:")
 top_titles(doc)
 
