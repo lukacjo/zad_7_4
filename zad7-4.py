@@ -99,13 +99,13 @@ ser.play()
 
 doc=[]
 for i in range(10):
-    doc.append(movie(title=fake.name(), year=fake.year(), genre=fake.emoji(), views=fake.credit_card_number()))
-    doc.append(series(title=fake.name(), year=fake.year(), genre=fake.emoji(), views=fake.credit_card_number(), episode=fake.credit_card_number(), sezon=fake.credit_card_number()))
+    doc.append(movie(title=fake.sentence(nb_words=3), year=fake.year(), genre=fake.emoji(), views=fake.random_number(digits=2)))
+    doc.append(series(title=fake.sentence(nb_words=3), year=fake.year(), genre=fake.emoji(), views=fake.random_number(digits=2), episode=fake.random_number(digits=2), sezon=fake.random_number(digits=1)))
 doc.append(vid)
 doc.append(ser)
 
 
-#search(doc)
+
 print("Biblioteka filmów")
 show(both)
 generate_views(both)
@@ -113,3 +113,5 @@ print()
 show(both)
 print(f"Najpopularniejsze filmy i seriale dnia {today} to:")
 top_titles(doc)
+
+#search(doc)
