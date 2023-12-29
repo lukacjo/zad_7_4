@@ -30,21 +30,17 @@ class Series(Movie):
         return f"{self.title} S{self.sezon}E{self.episode} {self.views}"
 
 
-def get_series(data):
-    ser = [i for i in data if issubclass(type(i), Series)]
-    ser.sort(key=lambda p: p.title)
-    return ser
-
-
-def get_movies(data):
-    mov = [i for i in data if not issubclass(type(i), Series)]
-    mov.sort(key=lambda p: p.title)
-    return mov
+def get_show(data, needed_class):
+    show = [i for i in data if type(i) is needed_class]
+    show.sort(key=lambda p: p.title)
+    return show
 
 
 def search(data):
     word = input("Jaki film/serial? ")
-    any(print(x) for x in data if x.title == word)
+    for x in data:
+        if x.title == word:
+            print(x)
 
 
 def generate_views(data):
@@ -59,11 +55,9 @@ def gen10times(data):
 
 def top_titles(data):
     quantity = int(input("Ile filmów/seriali chcesz? "))
-    ser = []
-    for i in data:
-        ser.append(i)
+    ser = data
     ser.sort(key=lambda p: p.views, reverse=True)
-    for i in ser[0:quantity]:
+    for i in ser[:quantity]:
         print(i)
 
 
@@ -94,10 +88,10 @@ def add_series(data):
 
 def show(data):
     print("\nSeriale:")
-    for i in get_series(data):
+    for i in get_show(data, Series):
         print(i)
     print("\nFilmy:")
-    for i in get_movies(data):
+    for i in get_show(data, Movie):
         print(i)
 
 
