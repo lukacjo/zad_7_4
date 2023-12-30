@@ -36,6 +36,14 @@ def get_show(data, needed_class):
     return show
 
 
+def get_series(data):
+    return get_show(data, Series)
+
+
+def get_movies(data):
+    return get_show(data, Movie)
+
+
 def search(data):
     word = input("Jaki film/serial? ")
     for x in data:
@@ -88,10 +96,10 @@ def add_series(data):
 
 def show(data):
     print("\nSeriale:")
-    for i in get_show(data, Series):
+    for i in get_series(data):
         print(i)
     print("\nFilmy:")
-    for i in get_show(data, Movie):
+    for i in get_movies(data):
         print(i)
 
 
